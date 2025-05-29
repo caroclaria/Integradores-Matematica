@@ -79,9 +79,103 @@ suma_digitos(Yamila)
 suma_digitos(Natalia)
 suma_digitos(Carolina)
 suma_digitos(Daiana)
+
+
 #Evaluación de condiciones lógicas (condicionales), vinculadas con las expresiones escritas.
 # Ejemplos:
 #Si un dígito aparece en todos los conjuntos, mostrar "Dígito compartido".
 #Si algún conjunto tiene más de 6 elementos, mostrar "Diversidad numérica alta".
 
+#B. Operaciones con años de nacimiento
+#Ingreso de los años de nacimiento de las 5 integrantes.
+año_nacimiento = []
+print("Ingrese los años de nacimiento de los 5 integrantes:")
+for i in range(5):
+    while True:
+        año = int(input(f"Integrante {i+1}: "))
+        año_nacimiento.append(año)
+        break
 
+
+#Contar nacidas en años pares e impares.
+pares = 0
+impares = 0
+for año in año_nacimiento:
+    if año % 2 == 0:
+        pares += 1
+    else:
+        impares += 1
+
+print(f"Integrantes nacidas en años pares: {pares}")
+print(f"Integrantes nacidas en años impares: {impares}")
+
+
+#Clasificar los años segun su generación.
+generacion_x = 0
+generacion_y = 0
+generacion_z = 0
+generacion_alpha = 0
+
+print("\nClasificación de los años segun su generacion:")
+for año in año_nacimiento:
+    if 1960 <= año <= 1979:
+        if generacion_x == 0:
+            print("Años correspondientes a la generación X:", end=" ")
+        generacion_x += 1
+        print(año, end=" ")
+    elif 1980 <= año <= 1994:
+        if generacion_y == 0:
+            print("\nAños correspondientes a la generación Y:", end=" ")
+        generacion_y += 1
+        print(año, end=" ")
+    elif 1995 <= año <= 2009:
+        if generacion_z == 0:
+            print("\nAños correspondientes a la generación Z:", end=" ")
+        generacion_z += 1
+        print(año, end=" ")
+    elif año >= 2010:
+        if generacion_alpha == 0:
+            print("\nAños correspondientes a la generación Alpha:", end=" ")
+        generacion_alpha += 1
+        print(año, end=" ")
+
+#Determinar si un año es bisiesto
+def bisiesto(año):
+    if (año % 4 == 0 and año % 100 != 0) or (año % 400 == 0):
+        return True
+    else:
+        return False
+    
+# Verificar si alguno nació en año bisiesto y mostrar cuáles
+año_bisiesto = [año for año in año_nacimiento if bisiesto(año)]
+
+if año_bisiesto:
+    print("\n¡Tenemos años especiales!")
+    print("Los años bisiestos de esta lista son: ", ", ".join(map(str, año_bisiesto))) 
+    #Toma la lista de años bisiestos, convierte cada número a una cadena de texto 
+    # y une todas esas cadenas en una sola, separando los años con una coma y un espacio.
+else:
+    print("\nNinguno nació en un año bisiesto.")
+
+# Calcular el producto cartesiano entre años y edades
+
+#Calcular edad actual
+def calcular_edad(año_nacimiento):
+    año_actual = 2025
+    return año_actual - año_nacimiento
+edades = [calcular_edad(año) for año in año_nacimiento]
+
+#mostrar conjunto años y conjunto edades
+print("el conjunto de edades actuales es", set(edades))
+print("el conjunto de años de nacimiento es", set(año_nacimiento))
+
+#calcular producto cartesiano
+producto_cartesiano = []
+for año in año_nacimiento:
+    for edad in edades:
+        producto_cartesiano.append((año, edad))
+
+print("El producto cartesiano entre el conjunto de años de nacimiento y las edades actuales es: ")
+for par in producto_cartesiano:
+    print(par)
+    
