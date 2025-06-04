@@ -82,9 +82,35 @@ suma_digitos(Daiana)
 
 
 #Evaluación de condiciones lógicas (condicionales), vinculadas con las expresiones escritas.
-# Ejemplos:
-#Si un dígito aparece en todos los conjuntos, mostrar "Dígito compartido".
-#Si algún conjunto tiene más de 6 elementos, mostrar "Diversidad numérica alta".
+#Si hay más conjuntos con cantidad par de elementos que con cantidad impar, entonces se etiqueta como "grupo par".
+#Grupo par:
+conjuntos = [A,Y,N,C,D]
+conteo_par = 0
+conteo_impar = 0
+for conjunto in conjuntos:
+    if len(conjunto) % 2 == 0:
+        conteo_par += 1
+    else:
+        conteo_impar += 1
+print(f"Cantidad de conjuntos con número par de elementos: {conteo_par}")
+print(f"Cantidad de conjuntos con número impar de elementos: {conteo_impar}")
+
+if conteo_par > conteo_impar:
+    print("el grupo es etiquetado como grupo par")
+else:
+    print("El grupo NO es etiquetado como grupo par")
+
+
+
+#Si todos los conjuntos tienen al menos 5 elementos, entonces se considera que hay una alta diversidad numérica.
+#Alta diversidad numerica
+alta_diversidad = True
+for conjunto in conjuntos:
+    if len(conjunto) < 5:
+        alta_diversidad = False
+        break
+
+print(f"¿Hay alta diversidad numérica? {alta_diversidad}")
 
 #B. Operaciones con años de nacimiento
 #Ingreso de los años de nacimiento de las 5 integrantes.
